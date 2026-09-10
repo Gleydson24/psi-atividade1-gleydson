@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block titulo %}Catálogo de Livros{% endblock %}
+{% block conteudo %}
+<h2>Catálogo de Livros</h2>
+<form method="GET" action="{{ url_for('catalog.index') }}">
+    <input type="text" name="q" value="{{ q }}" placeholder="Buscar por título...">
+    <button type="submit">Pesquisar</button>
+</form>
+<ul>
+    {% for id, livro in livros.items() %}
+        <li>
+            <strong>{{ livro.titulo }}</strong> - {{ livro.autor }} ({{ livro.ano }})
+            <br>
+            <!-- Item 3: link usando url_for do blueprint catalog -->
+            <a href="{{ url_for('catalog.ver_livro', livro_id=id) }}">Ver Detalhes e Resenhas</a>
+        </li>
+    {% else %}
+        <p>Nenhum livro encontrado.</p>
+    {% endfor %}
+</ul>
+{% endblock %}

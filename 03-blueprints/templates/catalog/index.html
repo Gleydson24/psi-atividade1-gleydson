@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+<h2>Catálogo de Livros</h2>
+<form method="GET" action="{{ url_for('catalog.index') }}">
+
+    <input type="text" name="q" value="{{ q }}" placeholder="Buscar por título...">
+    <button type="submit">Pesquisar</button>
+</form>
+<ul>
+    {% for livro in livros %}
+        <li>
+            <strong>{{ livro.titulo }}</strong> - {{ livro.autor }} ({{ livro.ano }})
+            <br>
+    <a href="{{ url_for('catalog.ver_livro', livro_id=id) }}">Ver Detalhes e Resenhas</a>
+
+        <br>
+    {% else %}
+        <li>Nenhum livro encontrado.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

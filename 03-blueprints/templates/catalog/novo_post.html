@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block titulo %}Novo post{% endblock %}
+{% block conteudo %}
+<h1>Novo post</h1>
+<form method="POST">
+    <input type="text" name="titulo" placeholder="Título" required>
+    <textarea name="conteudo" placeholder="Conteúdo" required></textarea>
+    <button type="submit">Publicar</button>
+</form>
+{% endblock %}
